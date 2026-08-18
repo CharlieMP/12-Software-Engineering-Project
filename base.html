@@ -1,0 +1,15 @@
+<!-- Basic html template that I found on Edstem -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}Movie Reviews{% endblock %}</title>
+        <link rel='stylesheet' href='/statics/css/style.css'>
+    </head>
+    <body>
+        <h1>{% block heading%}Welcome to the Movie Reviews Website{% endblock %}</h1>
+        <img src='/statics/images/movie_banner.png' height='70'>
+        <div class='content'>
+            {% block content %}{% endblock %}
+        </div>
+    </body>
+</html>
