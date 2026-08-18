@@ -1,0 +1,15 @@
+<!-- Basic html template that I found on Edstem -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}Welcome to PracLog, the practice logging website{% endblock %}</title>
+        <link rel='stylesheet' href='/static/css/style.css'>
+    </head>
+    <body>
+        <h1>{% block heading%}PracLog{% endblock %}</h1>
+        <img src='/static/images/Praclog_logo.png' height='70'>
+        <div class='content'>
+            {% block content %}{% endblock %}
+        </div>
+    </body>
+</html>
