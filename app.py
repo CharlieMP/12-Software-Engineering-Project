@@ -16,5 +16,11 @@ def home():
     return render_template('home.html', logs=result)
 
 
+
+@app.route('/add_log', methods=['GET'])
+def show_form():
+    return render_template('add_log.html')
+
+
 app.run(debug=True, reloader_type='stat', port=5000)
 
