@@ -1,16 +1,47 @@
-{% extends 'base.html' %}
+<!-- assisted by AI -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to PracLog - All Logs</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
 
-{% block title %}Home - PracLog{% endblock %}
+    <h1>PracLog</h1>
+    <img src="/static/images/Praclog_logo.png" height="90" alt="PracLog Logo">
 
-{% block content %}
-<h3>Welcome to PracLog, the practice logging website</h3>
-<p> Click <a href='/add_log'>here</a> to get started and add a log</p>
-        <table>
-            <tr>
-                <th>Date</th>
-                <th>Duration</th>
-                <th>Content</th>
-            </tr>
+    <hr>
+
+    <h2>All Practice Logs</h2>
+
+    <a href="{{ url_for('add_log') }}">+ Add New Log</a>
+    <br><br>
+
+    {% if logs %}
+        <table border="1" cellpadding="8" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Date / Time</th>
+                    <th>Piece(s) Practiced</th>
+                    <th>Duration (mins)</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for log in logs %}
+                    <tr>
+                        <td>{{ log.created_at }}</td>
+                        <td>{{ log.pieces_practiced }}</td>
+                        <td>{{ log.duration_minutes }}</td>
+                        <td>{{ log.description }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
         </table>
+    {% else %}
+        <p>No practice logs found. <a href="{{ url_for('add_log') }}">Create your first log!</a></p>
+    {% endif %}
 
-{% endblock %}
+</body>
+</html>

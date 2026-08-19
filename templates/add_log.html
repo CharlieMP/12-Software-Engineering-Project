@@ -1,8 +1,34 @@
-{% extends 'base.html' %}
-
-{% block heading %}
-Add Log
-{% endblock %}
+<!-- assisted by AI -->
+{% extends "base.html" %}
 
 {% block content %}
+<h2>Add a Practice Log</h2>
+
+<form action="/add_log" method="POST">
+    
+    <div>
+        <label for="pieces_practiced">Piece(s) Practiced:</label><br>
+        <input type="text" id="pieces_practiced" name="pieces_practiced" required placeholder="e.g., Chopin Nocturne Op. 9 No. 2">
+    </div>
+
+    <br>
+
+    <div>
+        <label for="duration_minutes">Duration (in minutes):</label><br>
+        <input type="number" id="duration_minutes" name="duration_minutes" min="1" required placeholder="e.g., 45">
+    </div>
+
+    <br>
+
+    <div>
+        <label for="description">Practice Notes / Description:</label><br>
+        <textarea id="description" name="description" rows="5" cols="40" required placeholder="What did you focus on today?"></textarea>
+    </div>
+
+    <br>
+
+    <button type="submit">Save Log</button>
+    <a href="{{ url_for('home') }}">Cancel</a>
+
+</form>
 {% endblock %}
