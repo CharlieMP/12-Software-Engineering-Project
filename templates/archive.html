@@ -1,9 +1,8 @@
-<!-- assisted by AI -->
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Welcome to PracLog - All Logs</title>
+    <title>PracLog - Practice Archive</title>
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
@@ -11,13 +10,15 @@
     <h1>PracLog</h1>
     <img src="/static/images/Praclog_logo.png" height="90" alt="PracLog Logo">
 
+    <nav>
+        <a href="{{ url_for('home') }}">This Week's Logs</a> | 
+        <a href="{{ url_for('archive') }}">Archive (All Logs)</a> | 
+        <a href="{{ url_for('add_log') }}">+ Add Log</a>
+    </nav>
+
     <hr>
 
-    <h2>This Week's Practice Logs</h2>
-
-    <a href="{{ url_for('add_log') }}">+ Add New Log</a>
-    <a href="{{ url_for('archive') }}">View Archive</a>
-    <br><br>
+    <h2>All Past Practice Logs</h2>
 
     {% if logs %}
         <table border="1" cellpadding="8" cellspacing="0">
@@ -41,7 +42,7 @@
             </tbody>
         </table>
     {% else %}
-        <p>No practice logs found. <a href="{{ url_for('add_log') }}">Create your first log!</a></p>
+        <p>No practice logs found in the database.</p>
     {% endif %}
 
 </body>
