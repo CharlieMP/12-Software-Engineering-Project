@@ -1,0 +1,27 @@
+(ai assisted)
+MODULE GetWeeklySummary()
+    current_year_week = GET_CURRENT_YEAR_WEEK()
+    weekly_logs = FETCH_WEEKLY_LOGS(current_year_week)
+    total_minutes = CALCULATE_TOTAL_MINUTES(weekly_logs)
+    
+    RETURN {
+        "logs": weekly_logs,
+        "total_minutes": total_minutes,
+        "log_count": LENGTH(weekly_logs)
+    }
+END MODULE
+
+
+FUNCTION FETCH_WEEKLY_LOGS(year_week_code)
+    query = "SELECT * FROM practice_logs WHERE strftime('%Y-%W', created_at) = ? ORDER BY created_at DESC"
+    records = EXECUTE_DATABASE_QUERY(query, year_week_code)
+    RETURN records
+END FUNCTION
+
+FUNCTION CALCULATE_TOTAL_MINUTES(logs_list)
+    total = 0
+    FOR EACH log IN logs_list DO
+        total = total + log.duration_minutes
+    END FOR
+    RETURN total
+END FUNCTION
